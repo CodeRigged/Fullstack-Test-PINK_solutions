@@ -1,0 +1,30 @@
+{
+  "author": "https://github.com/CodeRigged",
+  "description": "A fullstack example of a pnpm workspace.",
+  "devDependencies": {
+    "rimraf": "^6.1.2",
+    "wait-on": "^9.0.3"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "keywords": [
+    "fullstack",
+    "template",
+    "pnpm",
+    "typescript",
+    "react",
+    "express",
+    "mongoose"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "fullstack-app-template",
+  "scripts": {
+    "build": "pnpm --stream -r run build",
+    "clean": "rimraf build dist node_modules && pnpm -r run clean",
+    "dev": "pnpm --parallel --stream -r run dev",
+    "predev": "pnpm -F shared build"
+  },
+  "version": "1.0.0"
+}

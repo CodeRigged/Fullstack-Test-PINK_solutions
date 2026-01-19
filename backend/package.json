@@ -1,0 +1,39 @@
+{
+  "author": "https://github.com/CodeRigged",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.5",
+    "shared": "workspace:*"
+  },
+  "description": "A simple todo list REST API",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "22.10.2",
+    "typescript": "^5.4.2"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "template",
+    "backend",
+    "mongoose"
+  ],
+  "license": "MIT",
+  "main": "build/app.js",
+  "name": "express-ts-template",
+  "scripts": {
+    "build": "tsc --incremental",
+    "clean": "rm -rf build tsconfig.tsbuildinfo",
+    "dev": "npx vite-node src/app.ts",
+    "start": "node build/app.js"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}
