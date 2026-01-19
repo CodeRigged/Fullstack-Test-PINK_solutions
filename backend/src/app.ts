@@ -19,7 +19,7 @@ app.use(
   }),
 );
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:9000", credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
