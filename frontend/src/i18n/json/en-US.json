@@ -11,6 +11,9 @@
     "landing": {
       "title": "Home page"
     },
+    "login": {
+      "title": "Login"
+    },
     "logout": {
       "title": "Logout"
     },

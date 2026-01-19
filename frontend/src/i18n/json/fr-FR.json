@@ -11,6 +11,9 @@
     "landing": {
       "title": "Accueil"
     },
+    "login": {
+      "title": "Se connecter"
+    },
     "logout": {
       "title": "Se déconnecter"
     },
