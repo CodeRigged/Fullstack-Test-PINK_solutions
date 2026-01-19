@@ -1,20 +1,12 @@
-import { createBrowserRouter, Navigate, Outlet } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
+import ProtectedRoute from "~/components/navigation/ProtectedRoute"
 import AppLayout from "~/layouts/AppLayout"
 import LandingPage from "~/pages/Landing"
 import LoginPage from "~/pages/LoginPage"
 import LogoutPage from "~/pages/LogoutPage"
+import PatientDetailsPage from "~/pages/PatientDetails"
 import ProfilePage from "~/pages/Profile"
 import SettingsPage from "~/pages/Settings"
-import { useFhirStore } from "~/stores/fhirStore"
-// ProtectedRoute: redirects to login if not authenticated
-function ProtectedRoute() {
-  const { isAuthenticated } = useFhirStore()
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
-  }
-  return <Outlet />
-}
 
 const router = createBrowserRouter([
   {
@@ -27,6 +19,7 @@ const router = createBrowserRouter([
           { path: "/", element: <LandingPage /> },
           { path: "/profile", element: <ProfilePage /> },
           { path: "/settings", element: <SettingsPage /> },
+          { path: "/patients/:id", element: <PatientDetailsPage /> },
         ],
       },
       { path: "/logout", element: <LogoutPage /> },
