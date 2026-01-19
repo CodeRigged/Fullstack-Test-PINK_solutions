@@ -2,6 +2,12 @@ import { Request, Response } from "express";
 import fhirtClient from "fhirclient";
 import { FhirBundle, FhirPatient } from "shared/types";
 
+declare module "express-session" {
+  interface SessionData {
+    SMART_KEY?: any;
+  }
+}
+
 export const startFhirClient = async (req: Request, res: Response) => {
   try {
     fhirtClient(req, res).authorize({
@@ -49,7 +55,6 @@ export const getPatientById = async (req: Request, res: Response) => {
 };
 
 export const checkSession = (req: Request, res: Response) => {
-  console.log("Checking session:", req.session);
   if (req.session && req.session.SMART_KEY) {
     res.json({ authenticated: true });
   } else {
