@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material"
 import { SyntheticEvent } from "react"
+import { Nullable } from "~/types/utils"
 
 export type SelectBoxOption<T> = {
   hint?: string
@@ -9,7 +10,7 @@ export type SelectBoxOption<T> = {
 
 interface SelectBoxProps {
   label?: React.ReactNode
-  onChange: (event: SyntheticEvent, selectedOption: SelectBoxOption<unknown> | null) => void
+  onChange: (event: SyntheticEvent, selectedOption: Nullable<SelectBoxOption<unknown>>) => void
   options: SelectBoxOption<unknown>[]
   selected: unknown
 }
@@ -20,7 +21,7 @@ interface SelectBoxProps {
  * @param {string} label - The label for the select box.
  * @param {Array<SelectBoxOption<unknown>>} options - An array of options for the select box.
  * @param {unknown} selected - The currently selected value.
- * @param {(event: SyntheticEvent, selectedOption: SelectBoxOption<unknown> | null) => void} onChange - The callback function to handle value change.
+ * @param {(event: SyntheticEvent, selectedOption: Nullable<SelectBoxOption<unknown>>) => void} onChange - The callback function to handle value change.
  * @return {ReactElement} The rendered select box component.
  */
 const SelectBox = ({ label, options, selected, onChange }: SelectBoxProps) => {

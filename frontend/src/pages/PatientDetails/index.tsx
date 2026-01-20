@@ -1,10 +1,11 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { Box, Chip, CircularProgress, Divider, Paper, Stack, Typography } from "@mui/material"
+import { Box, Chip, Divider, Paper, Stack, Typography } from "@mui/material"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { FhirPatient } from "shared/types"
 import LinkIconButton from "~/components/inputs/buttons/LinkIconButton"
 import { useFhirStore } from "~/stores/fhirStore"
+import { useAppStore } from "~/stores/index"
 
 // Enum for patient detail fields
 enum PatientField {
@@ -27,9 +28,15 @@ const FieldRow = ({ label, value }: { label: string; value: string | number | un
     <Typography variant="subtitle2" sx={{ minWidth: 120, color: "text.secondary" }}>
       {label}:
     </Typography>
-    <Typography variant="body1" sx={{ ml: 1 }}>
-      {value !== undefined && value !== null && value !== "" ? value : <Chip label="N/A" size="small" />}
-    </Typography>
+    {value !== undefined && value !== null && value !== "" ? (
+      <Typography variant="body1" sx={{ ml: 1 }}>
+        {value}
+      </Typography>
+    ) : (
+      <span style={{ marginLeft: 8 }}>
+        <Chip label="N/A" size="small" />
+      </span>
+    )}
   </Box>
 )
 
@@ -75,11 +82,16 @@ function getFieldValue(patient: FhirPatient, field: PatientField): string {
 
 const PatientDetails = () => {
   const { id } = useParams()
-  const { fetchPatientById, selectedPatient, isPending, text: pendingMessage } = useFhirStore()
+  const { isPending } = useAppStore()
+  const { fetchPatientById, selectedPatient, setSelectedPatient } = useFhirStore()
 
   useEffect(() => {
     if (id) fetchPatientById(id)
   }, [id, fetchPatientById])
+
+  useEffect(() => {
+    return () => setSelectedPatient(null)
+  }, [setSelectedPatient])
 
   return (
     <Box maxWidth={600} mx="auto" mt={4}>
@@ -89,18 +101,8 @@ const PatientDetails = () => {
           Patient Details
         </Typography>
       </Box>
-      {isPending && (
-        <Box display="flex" justifyContent="center" my={2}>
-          <CircularProgress size={32} />
-          {pendingMessage && (
-            <Typography ml={2} color="text.secondary">
-              {pendingMessage}
-            </Typography>
-          )}
-        </Box>
-      )}
       {selectedPatient ? (
-        <Paper elevation={3} sx={{ p: 3, mt: 2 }}>
+        <Paper elevation={3} sx={{ p: 3, my: 2 }}>
           <Stack spacing={2} divider={<Divider flexItem />}>
             <FieldRow label="ID" value={getFieldValue(selectedPatient, PatientField.Id)} />
             <FieldRow label="Active" value={getFieldValue(selectedPatient, PatientField.Active)} />

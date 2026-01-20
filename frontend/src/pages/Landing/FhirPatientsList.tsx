@@ -1,9 +1,10 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FhirEntry } from "shared/types"
 import { useFhirStore } from "~/stores/fhirStore"
+import { useAppStore } from "~/stores/index"
 
 const StyledTableHeader = styled("th")(({ theme }) => ({
   textAlign: "left",
@@ -23,8 +24,9 @@ const StyledTableRow = styled("tr")(({ theme }) => ({
   },
 }))
 
-const TodoList = () => {
-  const { fetchPatients, patients, isPending, text: pendingMessage } = useFhirStore()
+const FhirPatientsList = () => {
+  const { isPending } = useAppStore()
+  const { fetchPatients, patients } = useFhirStore()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -36,17 +38,7 @@ const TodoList = () => {
       <Typography variant="h4" gutterBottom align="center">
         Patients
       </Typography>
-      {isPending && (
-        <Box display="flex" justifyContent="center" my={2}>
-          <CircularProgress size={32} />
-          {pendingMessage && (
-            <Typography ml={2} color="text.secondary">
-              {pendingMessage}
-            </Typography>
-          )}
-        </Box>
-      )}
-      {Array.isArray(patients?.entry) && patients.entry.length > 0 && (
+      {Array.isArray(patients?.entry) && patients.entry.length > 0 && !isPending && (
         <Box my={2}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
@@ -86,4 +78,4 @@ const TodoList = () => {
   )
 }
 
-export default TodoList
+export default FhirPatientsList

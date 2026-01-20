@@ -1,10 +1,13 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 import { useEffect } from "react"
 import { Navigate } from "react-router-dom"
 import { useFhirStore } from "~/stores/fhirStore"
+import { useAppStore } from "../stores"
 
 const LoginPage = () => {
-  const { startFhirClient, isPending, text: pendingMessage, checkSession, isAuthenticated } = useFhirStore()
+  const { isPending } = useAppStore()
+  const { startFhirClient, checkSession, isAuthenticated } = useFhirStore()
+
   useEffect(() => {
     checkSession()
   }, [checkSession])
@@ -25,20 +28,8 @@ const LoginPage = () => {
         Please log in to start the FHIR client and access patient data.
       </Typography>
       <Button variant="contained" color="primary" onClick={handleLogin} disabled={isPending} size="large">
-        {isPending ? (
-          <>
-            <CircularProgress size={20} color="inherit" />
-            <span style={{ marginLeft: 8 }}>Starting...</span>
-          </>
-        ) : (
-          "Connect to FHIR Client"
-        )}
+        Connect to FHIR Client
       </Button>
-      {pendingMessage && (
-        <Typography mt={2} color="text.secondary">
-          {pendingMessage}
-        </Typography>
-      )}
     </Box>
   )
 }
