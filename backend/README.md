@@ -1,63 +1,63 @@
-# Express + TypeScript + MongoDB
+# Express + TypeScript FHIR Backend
 
-This is the backend package of a fullstack monorepo managed with [pnpm workspaces](https://pnpm.io/workspaces). It provides a minimal REST API template using Express, TypeScript, and MongoDB (via Mongoose).
+This is the backend API package of a fullstack monorepo managed with [pnpm workspaces](https://pnpm.io/workspaces). It provides REST API endpoints using Express and TypeScript, focused on FHIR patient data integration. The backend shares types and logic with other packages in the monorepo for seamless integration.
 
 ## Features
 
-- Simple RESTful API for Todos
-- MongoDB integration with [mongoose](https://mongoosejs.com/)
+- FHIR API endpoints for patient data (SMART on FHIR OAuth2 flow)
 - TypeScript-first development
-- Shares types and logic with other packages in the monorepo
+- Shared types and utilities across packages
 
 ## Prerequisites
 
-- **Node.js** (see root package.json for required version)
-- **MongoDB**: You must have a running MongoDB instance (default: mongodb://localhost:27017/todos). You can use a local install or Docker:
-  - Local: [Install MongoDB Community Edition](https://www.mongodb.com/try/download/community)
-  - Docker: `docker run -d -p 27017:27017 --name mongo mongo`
+- **Node.js** (see root `package.json` for required version)
 
 ## Usage in Monorepo
 
-This package is intended to be used as part of the monorepo. To install dependencies and run the backend in development mode, use the root workspace commands:
+This package is intended for use within the monorepo. To install dependencies and run the backend in development mode, use the root workspace commands:
 
 ```bash
 pnpm install
-pnpm --filter express-ts-template dev
+pnpm --filter backend dev
 ```
 
 You can also build or start the backend specifically:
 
 ```bash
-pnpm --filter express-ts-template build
-pnpm --filter express-ts-template start
+pnpm --filter backend build
+pnpm --filter backend start
 ```
 
 ## Project Structure
 
 - `src/` – Application source code
   - `api/controllers/` – Express route handlers (controllers)
-  - `api/models/` – Mongoose models
+    - `fhirController.ts` – FHIR API logic
   - `api/routes/` – Express routers
-  - `api/services/` – Business/data logic
+    - `fhirRoutes.ts` – FHIR API routes
 - `build/` – Compiled JavaScript output
 - `package.json` – Project metadata and scripts
 
 ## API Endpoints
 
-- `GET /todos` – List all todos
-- `POST /todos` – Add a new todo (body: `{ text: string }`)
-- `PUT /todos/:id` – Edit a todo's text (body: `{ text: string }`)
-- `DELETE /todos/:id` – Delete a todo by ID
-- `GET /health` – Health check endpoint (returns 200 if DB is connected)
+### FHIR
 
-Example todo object:
+- `GET /fhir/start` – Initiate SMART on FHIR OAuth2 login
+- `GET /fhir/check-session` – Check authentication/session status
+- `POST /fhir/stop` – Logout and destroy session
+- `GET /fhir/patients` – Get list of patients
+- `GET /fhir/patients/:id` – Get patient details by ID
 
-```json
-{
-  "_id": "...",
-  "text": "Buy milk",
-  "completed": false
-}
-```
+### Health
+
+- `GET /health` – Health check endpoint (returns `{ status: "ok" }`)
+
+## Monorepo Packages
+
+- `backend` – This backend API package
+- `frontend` – React frontend app
+- `shared` – Shared types and utilities
+
+---
 
 Happy coding!

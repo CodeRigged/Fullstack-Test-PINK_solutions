@@ -7,30 +7,28 @@
     "express": "^4.19.2",
     "express-session": "^1.18.2",
     "fhirclient": "^2.6.3",
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.3.5",
     "shared": "workspace:*"
   },
-  "description": "A simple todo list REST API",
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.18.2",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "22.10.2",
     "typescript": "^5.4.2"
   },
   "keywords": [
     "express",
     "typescript",
-    "template",
     "backend",
-    "mongoose"
+    "FHIR",
+    "SMART on FHIR",
+    "REST API"
   ],
   "license": "MIT",
   "main": "build/app.js",
-  "name": "express-ts-template",
+  "name": "backend",
+  "description": "Express + TypeScript backend for FHIR patient data (SMART on FHIR), part of a fullstack monorepo.",
   "scripts": {
     "build": "tsc --incremental",
     "clean": "rm -rf build tsconfig.tsbuildinfo",
