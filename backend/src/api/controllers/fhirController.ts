@@ -8,6 +8,13 @@ declare module "express-session" {
   }
 }
 
+/**
+ * Initiates the SMART on FHIR OAuth2 authorization flow.
+ * Redirects the user to the FHIR server's authorization endpoint.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 export const startFhirClient = async (req: Request, res: Response) => {
   try {
     fhirtClient(req, res).authorize({
@@ -19,7 +26,13 @@ export const startFhirClient = async (req: Request, res: Response) => {
   }
 };
 
-// Stop FHIR client: destroy session and respond
+/**
+ * Stops the FHIR client session by destroying the user's session.
+ * Responds with a confirmation message or error.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 export const stopFhirClient = (req: Request, res: Response) => {
   req.session?.destroy((err) => {
     if (err) {
@@ -29,6 +42,13 @@ export const stopFhirClient = (req: Request, res: Response) => {
   });
 };
 
+/**
+ * Fetches a list of FHIR Patient resources for the authenticated user.
+ * Responds with a FhirBundle of patients or an error.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 export const getPatients = async (req: Request, res: Response) => {
   try {
     const client = await fhirtClient(req, res).ready();
@@ -40,6 +60,13 @@ export const getPatients = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Fetches a single FHIR Patient resource by ID for the authenticated user.
+ * Responds with the patient data or an error.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 export const getPatientById = async (req: Request, res: Response) => {
   const patientId = req.params.id;
   try {
@@ -54,6 +81,13 @@ export const getPatientById = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Checks if the user has an active SMART on FHIR session.
+ * Responds with authentication status.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 export const checkSession = (req: Request, res: Response) => {
   if (req.session && req.session.SMART_KEY) {
     res.json({ authenticated: true });
