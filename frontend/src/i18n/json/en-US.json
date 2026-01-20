@@ -9,7 +9,28 @@
   },
   "pages": {
     "landing": {
-      "title": "Home page"
+      "title": "Home page",
+      "patientsTitle": "Patients",
+      "name": "Name",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "view": "View"
+    },
+    "patientDetails": {
+      "title": "Patient Details",
+      "id": "ID",
+      "active": "Active",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "resourceType": "Resource Type",
+      "name": "Name",
+      "telecom": "Telecom",
+      "identifier": "Identifier",
+      "contact": "Contact",
+      "lastUpdated": "Last Updated",
+      "multipleBirth": "Multiple Birth",
+      "textStatus": "Text Status",
+      "noData": "No patient data found."
     },
     "login": {
       "title": "Login"

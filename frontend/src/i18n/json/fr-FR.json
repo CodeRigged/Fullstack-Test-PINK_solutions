@@ -9,7 +9,28 @@
   },
   "pages": {
     "landing": {
-      "title": "Accueil"
+      "title": "Accueil",
+      "patientsTitle": "Patients",
+      "name": "Nom",
+      "gender": "Genre",
+      "birthDate": "Date de naissance",
+      "view": "Voir"
+    },
+    "patientDetails": {
+      "title": "Détails du patient",
+      "id": "ID",
+      "active": "Actif",
+      "gender": "Genre",
+      "birthDate": "Date de naissance",
+      "resourceType": "Type de ressource",
+      "name": "Nom",
+      "telecom": "Télécom",
+      "identifier": "Identifiant",
+      "contact": "Contact",
+      "lastUpdated": "Dernière mise à jour",
+      "multipleBirth": "Naissance multiple",
+      "textStatus": "Statut du texte",
+      "noData": "Aucune donnée patient trouvée."
     },
     "login": {
       "title": "Se connecter"

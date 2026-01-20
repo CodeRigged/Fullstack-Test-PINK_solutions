@@ -18,10 +18,10 @@ const router = createBrowserRouter([
         children: [
           { path: "/", element: <LandingPage /> },
           { path: "/profile", element: <ProfilePage /> },
-          { path: "/settings", element: <SettingsPage /> },
           { path: "/patients/:id", element: <PatientDetailsPage /> },
         ],
       },
+      { path: "/settings", element: <SettingsPage /> },
       { path: "/logout", element: <LogoutPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "*", element: <div>404 Not Found</div> },

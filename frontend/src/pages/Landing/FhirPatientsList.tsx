@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { useEffect } from "react"
+import { FormattedMessage } from "react-intl"
 import { useNavigate } from "react-router-dom"
 import { FhirEntry } from "shared/types"
 import { useFhirStore } from "~/stores/fhirStore"
@@ -36,16 +37,22 @@ const FhirPatientsList = () => {
   return (
     <Box maxWidth={480} mx="auto" mt={4}>
       <Typography variant="h4" gutterBottom align="center">
-        Patients
+        <FormattedMessage id="pages.landing.patientsTitle" defaultMessage="Patients" />
       </Typography>
       {Array.isArray(patients?.entry) && patients.entry.length > 0 && !isPending && (
         <Box my={2}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
-                <StyledTableHeader>Name</StyledTableHeader>
-                <StyledTableHeader>Gender</StyledTableHeader>
-                <StyledTableHeader>Birth Date</StyledTableHeader>
+                <StyledTableHeader>
+                  <FormattedMessage id="pages.landing.name" defaultMessage="Name" />
+                </StyledTableHeader>
+                <StyledTableHeader>
+                  <FormattedMessage id="pages.landing.gender" defaultMessage="Gender" />
+                </StyledTableHeader>
+                <StyledTableHeader>
+                  <FormattedMessage id="pages.landing.birthDate" defaultMessage="Birth Date" />
+                </StyledTableHeader>
                 <StyledTableHeader></StyledTableHeader>
               </tr>
             </thead>
@@ -64,7 +71,7 @@ const FhirPatientsList = () => {
                       <td>{patient.birthDate || "-"}</td>
                       <td>
                         <Button variant="outlined" size="small" onClick={() => navigate(`/patients/${patient.id}`)}>
-                          View
+                          <FormattedMessage id="pages.landing.view" defaultMessage="View" />
                         </Button>
                       </td>
                     </StyledTableRow>

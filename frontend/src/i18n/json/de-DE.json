@@ -9,7 +9,28 @@
   },
   "pages": {
     "landing": {
-      "title": "Startseite"
+      "title": "Startseite",
+      "patientsTitle": "Patienten",
+      "name": "Name",
+      "gender": "Geschlecht",
+      "birthDate": "Geburtsdatum",
+      "view": "Anzeigen"
+    },
+    "patientDetails": {
+      "title": "Patientendetails",
+      "id": "ID",
+      "active": "Aktiv",
+      "gender": "Geschlecht",
+      "birthDate": "Geburtsdatum",
+      "resourceType": "Ressourcentyp",
+      "name": "Name",
+      "telecom": "Telekommunikation",
+      "identifier": "Kennung",
+      "contact": "Kontakt",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "multipleBirth": "Mehrlingsgeburt",
+      "textStatus": "Textstatus",
+      "noData": "Keine Patientendaten gefunden."
     },
     "login": {
       "title": "Anmelden"
