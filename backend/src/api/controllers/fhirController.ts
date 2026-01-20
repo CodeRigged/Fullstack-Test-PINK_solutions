@@ -12,7 +12,7 @@ export const startFhirClient = async (req: Request, res: Response) => {
   try {
     fhirtClient(req, res).authorize({
       iss: process.env.FHIR_CLIENT_URI,
-      redirectUri: "http://localhost:9000/",
+      redirectUri: process.env.FHIR_REDIRECT_URI,
     });
   } catch (err) {
     res.status(500).json({ error: "Failed to connect to FHIR client" });

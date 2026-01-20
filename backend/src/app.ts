@@ -19,7 +19,7 @@ app.use(
   }),
 );
 
-app.use(cors({ origin: "http://localhost:9000", credentials: true }));
+app.use(cors({ origin: process.env.FHIR_REDIRECT_URI, credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
