@@ -6,8 +6,6 @@
     "@emotion/styled": "11.14.0",
     "@mui/icons-material": "6.2.1",
     "@mui/material": "6.2.1",
-    "eslint-plugin-typescript-sort-keys": "3.3.0",
-    "graphql": "16.10.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-intl": "7.0.4",
@@ -26,6 +24,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-refresh": "0.4.16",
+    "eslint-plugin-typescript-sort-keys": "3.3.0",
     "prettier": "3.4.2",
     "sass": "1.83.0",
     "typescript": "5.7.2",
@@ -38,7 +37,7 @@
     "frontend"
   ],
   "license": "MIT",
-  "name": "react-ts-template",
+  "name": "frontend",
   "private": true,
   "scripts": {
     "build": "tsc && vite build",
