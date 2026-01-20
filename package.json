@@ -14,8 +14,7 @@
     "pnpm",
     "typescript",
     "react",
-    "express",
-    "mongoose"
+    "express"
   ],
   "license": "MIT",
   "main": "index.js",

@@ -40,7 +40,6 @@ This project is a fullstack example using a [pnpm](https://pnpm.io/) workspace. 
 
 - [Node.js](https://nodejs.org/) (v20.19.0 or higher recommended)
 - [pnpm](https://pnpm.io/) (v10.28 or higher recommended)
-- [MongoDB](https://www.mongodb.com/try/download/community) (required for backend; can be run locally or via Docker)
 
 To install pnpm globally, run:
 
