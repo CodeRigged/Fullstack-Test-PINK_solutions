@@ -53,7 +53,7 @@ export const useFhirStore = create<FhirStore>((set, get) => ({
    * Starts the FHIR OAuth client flow by redirecting the browser.
    */
   startFhirClient: () => {
-    window.location.href = "http://localhost:5000/fhir/start"
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/fhir/start`
   },
 
   /**
